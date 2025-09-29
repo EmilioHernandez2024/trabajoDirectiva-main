@@ -1,0 +1,33 @@
+<h1 style="text-align: center;">{{ titulo }}</h1>
+<form>
+  <input type="text" name="nombre" [(ngModel)]="nombre"><br>
+  <input type="text" name="apellido" [(ngModel)]="apellido"><br>
+  <input type="text" name="cargo" [(ngModel)]="cargo"><br>
+  <input type="submit" value="registrar" (click)="registrar_usuario()">
+</form><br>
+<ng-template #sinRegistrar>
+  <p>Nadie registrado</p>
+</ng-template>
+
+<p *ngIf="registrado; else sinRegistrar">Mensaje: {{ mensaje }} con el nombre de {{nombre}} y el apellido {{ apellido}} y con el cargo de 
+  <span [ngClass]="{paraIngenieros: cargo=='Ingeniero'}">{{cargo}}</span></p>
+
+<p *ngIf="registrado; else sinRegistrar">Mensaje: {{ mensaje }} con el nombre de {{nombre}} y el apellido {{ apellido}} y con el cargo de
+  <span [ngStyle]="{'color': cargo == 'Ingeniero' ? 'blue' : 'black',
+      'font-weight': cargo == 'Ingeniero' ? 'bold' : 'normal',
+      'font-size': '1.2em',
+      'text-transform': 'uppercase'}">{{cargo}}</span>
+</p>
+
+<p *ngIf="registrado; else sinRegistrar">Mensaje: {{ mensaje }} con el nombre de {{nombre}} y el apellido {{ apellido}} y con el cargo de 
+  <span [ngStyle]="{'color': cargo == 'Ingeniero' ? 'blue' : (cargo == 'Licenciado' ? 'grey' : (cargo == 'Pintor' ? 'red' : 'black'))
+    }">{{cargo}}</span></p>
+
+<ul>
+  <li  *ngFor="let entrada of entradas; let i = index">
+    <span style="font-weight: bold; font-size: large;">
+      {{ entrada.titulo }}
+    </span>
+    . Entrada {{ (i+1) }}
+  </li>
+</ul>
