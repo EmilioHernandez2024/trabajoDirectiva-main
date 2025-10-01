@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, signal } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterOutlet } from '@angular/router';
 
@@ -17,7 +17,22 @@ export class App {
   apellido = "";
   cargo = "";
 
-  entradas: any[];
+  registrar_usuario() {
+    this.registrado = true;
+
+    if (this.cargo == "Ingeniero") {
+      this.mensaje = "Eres lo mejor";
+
+    } else if (this.cargo == "Licenciado") {
+      this.mensaje = "Eres lo peor";
+      
+    } else {
+      this.mensaje = "Registrado";
+    }
+}
+
+
+    entradas: any[];
 
   constructor(){
     this.entradas = [
@@ -31,10 +46,5 @@ export class App {
         titulo: "JavaScript, cada día más funcional"
       }
     ];
-  }
-
-  registrar_usuario(){
-    this.mensaje = "Usuario registrado";
-    this.registrado = true;
   }
 }

@@ -10,10 +10,12 @@
 </ng-template>
 
 <p *ngIf="registrado; else sinRegistrar">Mensaje: {{ mensaje }} con el nombre de {{nombre}} y el apellido {{ apellido}} y con el cargo de 
-  <span [ngClass]="{paraIngenieros: cargo=='Ingeniero'}">{{cargo}}</span></p>
+  <span [ngClass]="{paraIngenieros: cargo=='Ingeniero'}">{{cargo}}</span>
+</p>
 
 <p *ngIf="registrado; else sinRegistrar">Mensaje: {{ mensaje }} con el nombre de {{nombre}} y el apellido {{ apellido}} y con el cargo de
-  <span [ngStyle]="{'color': cargo == 'Ingeniero' ? 'blue' : 'black',
+  <span [ngStyle]="{
+      'color': cargo == 'Ingeniero' ? 'blue' : 'black',
       'font-weight': cargo == 'Ingeniero' ? 'bold' : 'normal',
       'font-size': '1.2em',
       'text-transform': 'uppercase'}">{{cargo}}</span>
